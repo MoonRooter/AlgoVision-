@@ -483,9 +483,9 @@ The project proposal uses the following references:
 
 <div align="center">
 
-## 🌟 The Idea in One Line
+## 🌟 
 
-### Don't just read the algorithm. **Watch it happen.**
+
 
 <br>
 
@@ -495,6 +495,6 @@ The project proposal uses the following references:
 
 If you like **AlgoVision**, consider giving the repository a ⭐
 
-**Made with ❤️ by Team AlgoVision**
+**Made by Team AlgoVision**
 
 </div>
