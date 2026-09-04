@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AlgoVision | Learn • Visualize • Practice</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #07111f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ---------------- NAVBAR ---------------- */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(7, 17, 31, 0.92);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            border-bottom: 1px solid #1e293b;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .logo span {
+            color: #a78bfa;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: #cbd5e1;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* ---------------- HERO ---------------- */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 120px 8% 70px;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(14, 165, 233, .12), transparent 35%),
+                radial-gradient(circle at 80% 40%, rgba(139, 92, 246, .15), transparent 35%);
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .tag {
+            display: inline-block;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 7px 14px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            line-height: 1.08;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 19px;
+            max-width: 580px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+            transition: .3s;
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+            color: white;
+        }
+
+        .secondary {
+            background: #111c2e;
+            border: 1px solid #334155;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ---------------- HERO VISUAL ---------------- */
+
+        .hero-visual {
+            width: 470px;
+            background: #0d1828;
+            border: 1px solid #24324a;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 30px 70px rgba(0,0,0,.35);
+        }
+
+        .window-bar {
+            display: flex;
+            gap: 8px;
+            padding-bottom: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .red { background: #ff5f57; }
+        .yellow { background: #febc2e; }
+        .green { background: #28c840; }
+
+        .visual-title {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .list-demo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 35px 0;
+            flex-wrap: wrap;
+        }
+
+        .node {
+            width: 65px;
+            height: 55px;
+            border: 2px solid #38bdf8;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(56,189,248,.1);
+            font-weight: bold;
+        }
+
+        .arrow {
+            color: #a78bfa;
+            font-size: 25px;
+            margin: 0 8px;
+        }
+
+        .code {
+            background: #060c15;
+            padding: 18px;
+            border-radius: 10px;
+            color: #cbd5e1;
+            font-family: Consolas, monospace;
+            font-size: 13px;
+        }
+
+        .code span {
+            color: #38bdf8;
+        }
+
+        /* ---------------- GENERIC ---------------- */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title small {
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: #94a3b8;
+            max-width: 650px;
+            margin: 10px auto;
+        }
+
+        /* ---------------- FEATURES ---------------- */
+
+        .features {
+            background: #091525;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: #0d1a2b;
+            padding: 30px;
+            border: 1px solid #1f3049;
+            border-radius: 15px;
+            transition: .3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            border-color: #38bdf8;
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            display: grid;
+            place-items: center;
+            font-size: 27px;
+            border-radius: 12px;
+            background: rgba(56,189,248,.12);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #94a3b8;
+        }
+
+        /* ---------------- TOPICS ---------------- */
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .topic-card {
+            padding: 25px;
+            text-align: center;
+            background: #0d1828;
+            border: 1px solid #1e293b;
+            border-radius: 13px;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        .topic-card:hover {
+            border-color: #8b5cf6;
+            transform: scale(1.04);
+        }
+
+        .topic-card .icon {
+            font-size: 35px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .topic-card p {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 7px;
+        }
+
+        /* ---------------- VISUALIZER ---------------- */
+
+        .visualizer-section {
+            background: #091525;
+        }
+
+        .visualizer-box {
+            max-width: 900px;
+            margin: auto;
+            background: #0c192a;
+            border: 1px solid #23344e;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .visual-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid #23344e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .visual-header span {
+            color: #22c55e;
+            font-size: 14px;
+        }
+
+        .visual-area {
+            padding: 65px 20px;
+            min-height: 230px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .visual-node {
+            min-width: 70px;
+            height: 65px;
+            padding: 10px;
+            border: 2px solid #38bdf8;
+            border-radius: 9px;
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            background: #10253a;
+            transition: .3s;
+        }
+
+        .visual-node.active {
+            border-color: #a78bfa;
+            box-shadow: 0 0 25px rgba(167,139,250,.35);
+        }
+
+        .controls {
+            padding: 20px;
+            border-top: 1px solid #23344e;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .controls button {
+            background: #122238;
+            color: white;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 11px 18px;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background: #1d3553;
+        }
+
+        /* ---------------- WORKFLOW ---------------- */
+
+        .workflow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .flow-card {
+            width: 150px;
+            min-height: 120px;
+            padding: 20px;
+            background: #0d1828;
+            border: 1px solid #23344e;
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+        }
+
+        .flow-card span {
+            display: block;
+            font-size: 30px;
+        }
+
+        .flow-arrow {
+            color: #38bdf8;
+            font-size: 28px;
+        }
+
+        /* ---------------- PRACTICE ---------------- */
+
+        .practice {
+            background: #091525;
+        }
+
+        .practice-panel {
+            max-width: 1000px;
+            margin: auto;
+            background: #0c192a;
+            border: 1px solid #23344e;
+            border-radius: 18px;
+            padding: 30px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .filter-row input,
+        .filter-row select {
+            flex: 1;
+            min-width: 190px;
+            background: #07111f;
+            color: white;
+            border: 1px solid #334155;
+            padding: 13px;
+            border-radius: 8px;
+        }
+
+        .problem {
+            display: grid;
+            grid-template-columns: 1fr 150px 120px;
+            gap: 15px;
+            align-items: center;
+            padding: 18px 10px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .problem:last-child {
+            border-bottom: none;
+        }
+
+        .easy { color: #22c55e; }
+        .medium { color: #fbbf24; }
+        .hard { color: #ef4444; }
+
+        .solve-btn {
+            background: #172554;
+            border: 1px solid #3b82f6;
+            color: #93c5fd;
+            padding: 8px 12px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        /* ---------------- TECH ---------------- */
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .tech {
+            padding: 30px 15px;
+            background: #0d1828;
+            border: 1px solid #23344e;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .tech span {
+            font-size: 38px;
+        }
+
+        /* ---------------- TEAM ---------------- */
+
+        .team {
+            background: #091525;
+        }
+
+        .team-grid {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .member {
+            background: #0c192a;
+            border: 1px solid #23344e;
+            padding: 28px 15px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            margin: auto auto 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+            display: grid;
+            place-items: center;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .member p {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-top: 7px;
+        }
+
+        /* ---------------- CTA ---------------- */
+
+        .cta {
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 900px;
+            margin: auto;
+            padding: 60px 25px;
+            border-radius: 22px;
+            background:
+                linear-gradient(135deg, rgba(14,165,233,.15), rgba(139,92,246,.15));
+            border: 1px solid #334155;
+        }
+
+        .cta h2 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+            padding: 35px 8%;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            color: #64748b;
+        }
+
+        footer strong {
+            color: #38bdf8;
+        }
+
+        /* ---------------- RESPONSIVE ---------------- */
+
+        @media (max-width: 1000px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .hero-content {
+                max-width: 800px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                width: 100%;
+                max-width: 500px;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .topic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav ul {
+                display: none;
+            }
+
+            .nav-btn {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .feature-grid,
+            .topic-grid,
+            .team-grid,
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .problem {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+    <a href="#" class="logo">Algo<span>Vision</span></a>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#topics">Topics</a></li>
+        <li><a href="#visualizer">Visualizer</a></li>
+        <li><a href="#practice">Practice</a></li>
+    </ul>
+
+    <a href="#topics" class="nav-btn">Start Learning</a>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="tag">
+            ⚡ Interactive DSA Learning Platform
+        </div>
+
+        <h1>
+            Don't Just Learn DSA.
+            <span class="gradient-text">See It Happen.</span>
+        </h1>
+
+        <p>
+            Learn Data Structures and Algorithms with C++ examples,
+            interactive step-by-step visualizations and structured
+            coding practice — all in one place.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#topics">
+                <button class="btn primary">
+                    🚀 Start Learning
+                </button>
+            </a>
+
+            <a href="#visualizer">
+                <button class="btn secondary">
+                    ▶ Try Visualizer
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="window-bar">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+
+        <div class="visual-title">
+            Linked List • Insert Node
+        </div>
+
+        <div class="list-demo">
+
+            <div class="node">10</div>
+            <div class="arrow">→</div>
+
+            <div class="node">20</div>
+            <div class="arrow">→</div>
+
+            <div class="node">30</div>
+            <div class="arrow">→</div>
+
+            <div style="color:#64748b;">
+                NULL
+            </div>
+
+        </div>
+
+        <div class="code">
+            <span>Node*</span> newNode = new Node(20);<br><br>
+            newNode->next = current->next;<br>
+            current->next = newNode;
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features" id="features">
+
+    <div class="section-title">
+        <small>Why AlgoVision?</small>
+        <h2>One Platform. Three Ways to Learn.</h2>
+        <p>
+            Move naturally from understanding a DSA concept
+            to visualizing its execution and finally practicing it.
+        </p>
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon">📖</div>
+            <h3>Learn</h3>
+            <p>
+                Understand DSA through simple explanations,
+                important operations and practical C++ examples.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Visualize</h3>
+            <p>
+                Watch nodes, pointers and data structures
+                change step-by-step during execution.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💻</div>
+            <h3>Practice</h3>
+            <p>
+                Find organized questions by topic and difficulty
+                and continue solving them on LeetCode.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🎮</div>
+            <h3>Interactive Controls</h3>
+            <p>
+                Use Previous, Next, Play and Reset controls
+                to explore algorithms at your own speed.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔎</div>
+            <h3>Smart Search</h3>
+            <p>
+                Search and filter practice questions
+                using topic and difficulty.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💾</div>
+            <h3>Track Progress</h3>
+            <p>
+                Save basic learning progress directly
+                in the browser without requiring an account.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TOPICS ================= -->
+
+<section id="topics">
+
+    <div class="section-title">
+        <small>Explore DSA</small>
+        <h2>Choose Your Topic</h2>
+        <p>
+            Build your DSA foundation one concept at a time.
+        </p>
+    </div>
+
+    <div class="topic-grid">
+
+        <div class="topic-card">
+            <span class="icon">🔢</span>
+            <h3>Arrays</h3>
+            <p>Basics • Traversal • Searching</p>
+        </div>
+
+        <div class="topic-card">
+            <span class="icon">🔤</span>
+            <h3>Strings</h3>
+            <p>Operations • Patterns</p>
+        </div>
+
+        <div class="topic-card">
+            <span class="icon">🔗</span>
+            <h3>Linked Lists</h3>
+            <p>Nodes • Pointers • Insert • Delete</p>
+        </div>
+
+        <div class="topic-card">
+            <span class="icon">📚</span>
+            <h3>Stacks</h3>
+            <p>Push • Pop • TOP</p>
+        </div>
+
+        <div class="topic-card">
+            <span class="icon">🚶</span>
+            <h3>Queues</h3>
+            <p>Enqueue • Dequeue</p>
+        </div>
+
+        <div class="topic-card">
+            <span class="icon">🌳</span>
+            <h3>Trees</h3>
+            <p>Nodes • Traversals</p>
+        </div>
+
+        <div class="topic-card">
+            <span class="icon">🕸️</span>
+            <h3>Graphs</h3>
+            <p>Vertices • Edges • Traversal</p>
+        </div>
+
+        <div class="topic-card">
+            <span class="icon">👉</span>
+            <h3>Pointers & DMA</h3>
+            <p>Memory • Addresses • Allocation</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= VISUALIZER ================= -->
+
+<section class="visualizer-section" id="visualizer">
+
+    <div class="section-title">
+        <small>Interactive Learning</small>
+        <h2>See the Algorithm Move</h2>
+        <p>
+            Follow data structures one operation at a time instead
+            of jumping directly to the final output.
+        </p>
+    </div>
+
+    <div class="visualizer-box">
+
+        <div class="visual-header">
+
+            <div>
+                <strong>Linked List Visualization</strong>
+            </div>
+
+            <span>● Interactive</span>
+
+        </div>
+
+        <div class="visual-area" id="visualArea">
+
+            <div class="visual-node active" id="node1">10</div>
+            <div class="arrow">→</div>
+
+            <div class="visual-node" id="node2">20</div>
+            <div class="arrow">→</div>
+
+            <div class="visual-node" id="node3">30</div>
+            <div class="arrow">→</div>
+
+            <span style="color:#64748b;">
+                NULL
+            </span>
+
+        </div>
+
+        <div class="controls">
+
+            <button onclick="previousStep()">
+                ⏮ Previous
+            </button>
+
+            <button onclick="nextStep()">
+                Next ⏭
+            </button>
+
+            <button onclick="playSteps()">
+                ▶ Play
+            </button>
+
+            <button onclick="resetSteps()">
+                ↻ Reset
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WORKFLOW ================= -->
+
+<section>
+
+    <div class="section-title">
+        <small>Learning Flow</small>
+        <h2>From Concept to Code</h2>
+    </div>
+
+    <div class="workflow">
+
+        <div class="flow-card">
+            <div>
+                <span>1️⃣</span>
+                Choose Topic
+            </div>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-card">
+            <div>
+                <span>📖</span>
+                Learn Concept
+            </div>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-card">
+            <div>
+                <span>💻</span>
+                View C++ Code
+            </div>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-card">
+            <div>
+                <span>🎨</span>
+                Visualize
+            </div>
+        </div>
+
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-card">
+            <div>
+                <span>🧠</span>
+                Practice
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRACTICE ================= -->
+
+<section class="practice" id="practice">
+
+    <div class="section-title">
+        <small>Practice Smarter</small>
+        <h2>Find Your Next Problem</h2>
+        <p>
+            Browse structured DSA questions and continue
+            solving them on LeetCode.
+        </p>
+    </div>
+
+    <div class="practice-panel">
+
+        <div class="filter-row">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="🔎 Search questions..."
+                onkeyup="filterProblems()"
+            >
+
+            <select id="difficulty" onchange="filterProblems()">
+                <option value="all">
+                    All Difficulties
+                </option>
+                <option value="easy">
+                    Easy
+                </option>
+                <option value="medium">
+                    Medium
+                </option>
+                <option value="hard">
+                    Hard
+                </option>
+            </select>
+
+        </div>
+
+
+        <div id="problems">
+
+            <div class="problem"
+                 data-name="two sum"
+                 data-level="easy">
+
+                <strong>Two Sum</strong>
+
+                <span class="easy">
+                    ● Easy
+                </span>
+
+                <a
+                    href="https://leetcode.com/problems/two-sum/"
+                    target="_blank"
+                >
+                    <button class="solve-btn">
+                        Solve ↗
+                    </button>
+                </a>
+
+            </div>
+
+
+            <div class="problem"
+                 data-name="valid parentheses"
+                 data-level="easy">
+
+                <strong>Valid Parentheses</strong>
+
+                <span class="easy">
+                    ● Easy
+                </span>
+
+                <a
+                    href="https://leetcode.com/problems/valid-parentheses/"
+                    target="_blank"
+                >
+                    <button class="solve-btn">
+                        Solve ↗
+                    </button>
+                </a>
+
+            </div>
+
+
+            <div class="problem"
+                 data-name="add two numbers"
+                 data-level="medium">
+
+                <strong>Add Two Numbers</strong>
+
+                <span class="medium">
+                    ● Medium
+                </span>
+
+                <a
+                    href="https://leetcode.com/problems/add-two-numbers/"
+                    target="_blank"
+                >
+                    <button class="solve-btn">
+                        Solve ↗
+                    </button>
+                </a>
+
+            </div>
+
+
+            <div class="problem"
+                 data-name="binary tree maximum path sum"
+                 data-level="hard">
+
+                <strong>
+                    Binary Tree Maximum Path Sum
+                </strong>
+
+                <span class="hard">
+                    ● Hard
+                </span>
+
+                <a
+                    href="https://leetcode.com/problems/binary-tree-maximum-path-sum/"
+                    target="_blank"
+                >
+                    <button class="solve-btn">
+                        Solve ↗
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TECHNOLOGY ================= -->
+
+<section>
+
+    <div class="section-title">
+        <small>Technology Stack</small>
+        <h2>Built With Simple Web Technologies</h2>
+    </div>
+
+    <div class="tech-grid">
+
+        <div class="tech">
+            <span>🌐</span>
+            <h3>HTML5</h3>
+        </div>
+
+        <div class="tech">
+            <span>🎨</span>
+            <h3>CSS3</h3>
+        </div>
+
+        <div class="tech">
+            <span>⚡</span>
+            <h3>JavaScript</h3>
+        </div>
+
+        <div class="tech">
+            <span>💻</span>
+            <h3>C++</h3>
+        </div>
+
+        <div class="tech">
+            <span>💾</span>
+            <h3>Local Storage</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TEAM ================= -->
+
+<section class="team">
+
+    <div class="section-title">
+        <small>DSCPP-III-2026-T218</small>
+        <h2>Meet Team AlgoVision</h2>
+    </div>
+
+    <div class="team-grid">
+
+        <div class="member">
+
+            <div class="avatar">
+                A
+            </div>
+
+            <h3>Abhishek</h3>
+
+            <p>
+                Team Lead
+            </p>
+
+        </div>
+
+
+        <div class="member">
+
+            <div class="avatar">
+                CM
+            </div>
+
+            <h3>
+                Chaitanya Maithani
+            </h3>
+
+            <p>
+                Team Member
+            </p>
+
+        </div>
+
+
+        <div class="member">
+
+            <div class="avatar">
+                CK
+            </div>
+
+            <h3>
+                Chaitanya Kharkwal
+            </h3>
+
+            <p>
+                Team Member
+            </p>
+
+        </div>
+
+
+        <div class="member">
+
+            <div class="avatar">
+                AR
+            </div>
+
+            <h3>
+                Arihant Rawat
+            </h3>
+
+            <p>
+                Team Member
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <div class="cta-box">
+
+        <h2>
+            Stop Memorizing.
+            <span class="gradient-text">
+                Start Visualizing.
+            </span>
+        </h2>
+
+        <p>
+            Understand what's happening behind your DSA code,
+            one step at a time.
+        </p>
+
+        <a href="#topics">
+
+            <button class="btn primary">
+                🚀 Explore AlgoVision
+            </button>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        Made with ❤️ by
+        <strong>Team AlgoVision</strong>
+    </p>
+
+    <p>
+        Learn • Visualize • Practice
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    /* ---------------- VISUALIZER ---------------- */
+
+    let currentStep = 0;
+
+    const visualNodes = [
+        document.getElementById("node1"),
+        document.getElementById("node2"),
+        document.getElementById("node3")
+    ];
+
+
+    function updateVisualization() {
+
+        visualNodes.forEach(function(node, index) {
+
+            node.classList.remove("active");
+
+            if (index === currentStep) {
+                node.classList.add("active");
+            }
+
+        });
+
+    }
+
+
+    function nextStep() {
+
+        if (currentStep < visualNodes.length - 1) {
+            currentStep++;
+        }
+
+        updateVisualization();
+
+    }
+
+
+    function previousStep() {
+
+        if (currentStep > 0) {
+            currentStep--;
+        }
+
+        updateVisualization();
+
+    }
+
+
+    function resetSteps() {
+
+        currentStep = 0;
+
+        updateVisualization();
+
+    }
+
+
+    function playSteps() {
+
+        currentStep = 0;
+
+        updateVisualization();
+
+        const animation = setInterval(function() {
+
+            if (currentStep >= visualNodes.length - 1) {
+
+                clearInterval(animation);
+
+                return;
+
+            }
+
+            currentStep++;
+
+            updateVisualization();
+
+        }, 900);
+
+    }
+
+
+    /* ---------------- PROBLEM FILTER ---------------- */
+
+    function filterProblems() {
+
+        const searchValue =
+            document
+            .getElementById("search")
+            .value
+            .toLowerCase();
+
+
+        const difficulty =
+            document
+            .getElementById("difficulty")
+            .value;
+
+
+        const problems =
+            document
+            .querySelectorAll(".problem");
+
+
+        problems.forEach(function(problem) {
+
+            const name =
+                problem.dataset.name;
+
+            const level =
+                problem.dataset.level;
+
+
+            const searchMatch =
+                name.includes(searchValue);
+
+
+            const difficultyMatch =
+                difficulty === "all" ||
+                level === difficulty;
+
+
+            if (searchMatch && difficultyMatch) {
+
+                problem.style.display = "grid";
+
+            } else {
+
+                problem.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
