@@ -477,7 +477,7 @@ The project proposal uses the following references:
 - 📙 Bjarne Stroustrup — *The C++ Programming Language*
 - 💻 LeetCode — external programming-practice platform
 - ⚙️ C++ Standard Library documentation
-- 🌐 MDN Web Docs — HTML, CSS, JavaScript, DOM and browser storage concepts
+- 🌐 MDN Web Docs — HTML, CSS, JavaScript, DOM and browser storage concept.
 
 ---
 
