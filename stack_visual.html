@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Algo Vision – DSA Visualizer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f0f1a;
+      color: #e0e0ff;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 { font-size: 2rem; color: #7c6fff; }
+    .subtitle { font-size: 0.82rem; color: #666; margin-bottom: 24px; }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .tab {
+      padding: 9px 28px;
+      border-radius: 8px;
+      border: 2px solid #7c6fff;
+      background: transparent;
+      color: #7c6fff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .tab.active, .tab:hover {
+      background: #7c6fff;
+      color: #fff;
+    }
+
+    .panel { display: none; width: 100%; max-width: 700px; }
+    .panel.active { display: block; }
+
+    /* ── CONTROLS ── */
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    input[type="number"] {
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 2px solid #7c6fff;
+      background: #1a1a2e;
+      color: #fff;
+      font-size: 1rem;
+      width: 100px;
+      outline: none;
+    }
+
+    button {
+      padding: 9px 20px;
+      border-radius: 8px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.1s, background 0.2s;
+    }
+
+    button:active { transform: scale(0.95); }
+
+    .btn-purple { background: #7c6fff; color: #fff; }
+    .btn-red    { background: #ff6b6b; color: #fff; }
+    .btn-green  { background: #4caf8a; color: #fff; }
+    .btn-grey   { background: #333;    color: #aaa; }
+
+    .log-box {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 20px;
+      min-height: 22px;
+    }
+
+    .log-box span { color: #7c6fff; font-weight: bold; }
+
+    /* ── STACK ── */
+    .stack-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .top-label {
+      font-size: 0.72rem;
+      color: #ff6b6b;
+      font-weight: bold;
+      letter-spacing: 1px;
+      min-height: 18px;
+      margin-bottom: 4px;
+    }
+
+    .stack-box {
+      width: 180px;
+      min-height: 280px;
+      background: #14142a;
+      border: 2px solid #333;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 6px;
+      gap: 6px;
+    }
+
+    .stack-block {
+      background: linear-gradient(135deg, #7c6fff, #5a4fe0);
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.05rem;
+      text-align: center;
+      padding: 11px 0;
+      border-radius: 6px;
+      animation: popIn 0.3s ease;
+    }
+
+    .stack-block.top-block { background: linear-gradient(135deg, #ff6b6b, #e84848); }
+
+    .empty-msg {
+      color: #333;
+      font-size: 0.82rem;
+      text-align: center;
+      padding: 20px 0;
+      align-self: center;
+    }
+
+    .base-bar {
+      width: 180px;
+      background: #333;
+      color: #888;
+      text-align: center;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      padding: 5px;
+      border-radius: 0 0 8px 8px;
+    }
+
+    /* ── LINKED LIST ── */
+    .list-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ll-track {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      min-height: 64px;
+      background: #14142a;
+      border: 2px solid #333;
+      border-radius: 10px;
+      padding: 14px 18px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .ll-node {
+      display: flex;
+      align-items: center;
+      animation: popIn 0.3s ease;
+    }
+
+    .ll-box {
+      background: linear-gradient(135deg, #4caf8a, #357a60);
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 10px 18px;
+      border-radius: 8px;
+      min-width: 52px;
+      text-align: center;
+    }
+
+    .ll-arrow {
+      color: #7c6fff;
+      font-size: 1.3rem;
+      margin: 0 4px;
+      font-weight: bold;
+    }
+
+    .ll-null {
+      color: #555;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-left: 4px;
+    }
+
+    .ll-empty {
+      color: #333;
+      font-size: 0.85rem;
+    }
+
+    .ll-head-label {
+      font-size: 0.72rem;
+      color: #4caf8a;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* ── INFO ── */
+    .info-box {
+      margin-top: 28px;
+      background: #1a1a2e;
+      border: 1px solid #2a2a40;
+      border-radius: 10px;
+      padding: 14px 22px;
+      font-size: 0.82rem;
+      color: #aaa;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .info-box code {
+      color: #7c6fff;
+      background: #0f0f1a;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; transform: scale(0.5); }
+    }
+
+    .removing { animation: fadeOut 0.28s ease forwards; }
+  </style>
+</head>
+<body>
+
+  <h1>⚡ Algo Vision</h1>
+  <p class="subtitle">DSA Visualizer — Stack &amp; Linked List</p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('stack', this)">Stack</button>
+    <button class="tab" onclick="switchTab('list', this)">Linked List</button>
+    <button class="tab" onclick="switchTab('queue', this)">Queue</button>
+  </div>
+
+  <!-- ── STACK PANEL ── -->
+  <div class="panel active" id="panel-stack">
+    <div class="controls">
+      <input type="number" id="s-input" placeholder="Value" />
+      <button class="btn-purple" onclick="pushStack()">Push</button>
+      <button class="btn-red"    onclick="popStack()">Pop</button>
+      <button class="btn-grey"   onclick="resetStack()">Reset</button>
+    </div>
+    <div class="log-box" id="s-log">Enter a value and press Push</div>
+    <div class="stack-wrap">
+      <div class="top-label" id="s-top-label"></div>
+      <div class="stack-box" id="s-box">
+        <div class="empty-msg" id="s-empty">Stack is empty</div>
+      </div>
+      <div class="base-bar">BASE</div>
+    </div>
+    <div class="info-box">
+      Stack → <code>LIFO</code> (Last In, First Out)<br>
+      <code>push(x)</code> adds to top &nbsp;|&nbsp; <code>pop()</code> removes from top
+    </div>
+  </div>
+
+  <!-- ── LINKED LIST PANEL ── -->
+  <div class="panel" id="panel-list">
+    <div class="controls">
+      <input type="number" id="ll-input" placeholder="Value" />
+      <button class="btn-green"  onclick="llInsertFront()">Insert Front</button>
+      <button class="btn-purple" onclick="llInsertEnd()">Insert End</button>
+      <button class="btn-red"    onclick="llDelete()">Delete</button>
+      <button class="btn-grey"   onclick="resetList()">Reset</button>
+    </div>
+    <div class="log-box" id="ll-log">Enter a value and choose an operation</div>
+    <div class="list-wrap">
+      <div class="ll-head-label">HEAD ↓</div>
+      <div class="ll-track" id="ll-track">
+        <span class="ll-empty">List is empty</span>
+      </div>
+    </div>
+    <div class="info-box">
+      Linked List → each node holds <code>data</code> + <code>next</code> pointer<br>
+      <code>Insert Front</code> adds at beginning &nbsp;|&nbsp; <code>Insert End</code> adds at tail<br>
+      <code>Delete</code> removes node with given value
+    </div>
+  </div>
+
+  <!-- ── QUEUE PANEL ── -->
+  <div class="panel" id="panel-queue">
+    <div class="controls">
+      <input type="number" id="q-input" placeholder="Value" />
+      <button class="btn-purple" style="background:#f0a500" onclick="qEnqueue()">Enqueue</button>
+      <button class="btn-red"    onclick="qDequeue()">Dequeue</button>
+      <button class="btn-grey"   onclick="resetQueue()">Reset</button>
+    </div>
+    <div class="log-box" id="q-log">Enter a value and press Enqueue</div>
+    <div class="list-wrap">
+      <div class="ll-head-label" style="color:#f0a500">FRONT → REAR</div>
+      <div class="ll-track" id="q-track">
+        <span class="ll-empty">Queue is empty</span>
+      </div>
+      <div id="q-labels" style="display:flex;width:100%;max-width:700px;padding:0 18px;min-height:18px;"></div>
+    </div>
+    <div class="info-box">
+      Queue → <code>FIFO</code> (First In, First Out)<br>
+      <code>enqueue(x)</code> adds at rear &nbsp;|&nbsp; <code>dequeue()</code> removes from front
+    </div>
+  </div>
+
+  <script>
+    // ── TAB SWITCH ──
+    function switchTab(name, btn) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('panel-' + name).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function log(id, msg, highlight) {
+      const el = document.getElementById(id);
+      el.innerHTML = highlight ? `<span>${msg}</span>` : msg;
+    }
+
+    // ── STACK ──
+    let stack = [];
+
+    function renderStack() {
+      const box = document.getElementById('s-box');
+      const topLabel = document.getElementById('s-top-label');
+      box.querySelectorAll('.stack-block').forEach(b => b.remove());
+      if (stack.length === 0) {
+        document.getElementById('s-empty').style.display = 'block';
+        topLabel.textContent = '';
+        return;
+      }
+      document.getElementById('s-empty').style.display = 'none';
+      topLabel.textContent = '▲ TOP';
+      stack.forEach((val, i) => {
+        const b = document.createElement('div');
+        b.className = 'stack-block' + (i === stack.length - 1 ? ' top-block' : '');
+        b.textContent = val;
+        b.id = 'sb-' + i;
+        box.appendChild(b);
+      });
+    }
+
+    function pushStack() {
+      const val = parseInt(document.getElementById('s-input').value);
+      if (isNaN(val)) { log('s-log', 'Please enter a valid number.'); return; }
+      if (stack.length >= 7) { log('s-log', 'Stack full! (max 7 for demo)'); return; }
+      stack.push(val);
+      renderStack();
+      log('s-log', `push(${val}) — added to top`, true);
+      document.getElementById('s-input').value = '';
+    }
+
+    function popStack() {
+      if (!stack.length) { log('s-log', 'Stack is empty — nothing to pop!'); return; }
+      const val = stack[stack.length - 1];
+      const top = document.getElementById('sb-' + (stack.length - 1));
+      if (top) {
+        top.classList.add('removing');
+        setTimeout(() => { stack.pop(); renderStack(); }, 280);
+      } else { stack.pop(); renderStack(); }
+      log('s-log', `pop() — removed ${val} from top`, true);
+    }
+
+    function resetStack() { stack = []; renderStack(); log('s-log', 'Stack reset.'); }
+
+    // ── LINKED LIST ──
+    let list = [];
+
+    function renderList() {
+      const track = document.getElementById('ll-track');
+      track.innerHTML = '';
+      if (list.length === 0) {
+        track.innerHTML = '<span class="ll-empty">List is empty</span>';
+        return;
+      }
+      list.forEach((val, i) => {
+        const node = document.createElement('div');
+        node.className = 'll-node';
+        node.id = 'ln-' + i;
+        node.innerHTML = `<div class="ll-box">${val}</div>`;
+        if (i < list.length - 1) {
+          node.innerHTML += `<div class="ll-arrow">→</div>`;
+        }
+        track.appendChild(node);
+      });
+      const nullEl = document.createElement('div');
+      nullEl.innerHTML = `<span class="ll-arrow">→</span><span class="ll-null">NULL</span>`;
+      track.appendChild(nullEl);
+    }
+
+    function llInsertFront() {
+      const val = parseInt(document.getElementById('ll-input').value);
+      if (isNaN(val)) { log('ll-log', 'Please enter a valid number.'); return; }
+      list.unshift(val);
+      renderList();
+      log('ll-log', `insertFront(${val}) — added at beginning`, true);
+      document.getElementById('ll-input').value = '';
+    }
+
+    function llInsertEnd() {
+      const val = parseInt(document.getElementById('ll-input').value);
+      if (isNaN(val)) { log('ll-log', 'Please enter a valid number.'); return; }
+      list.push(val);
+      renderList();
+      log('ll-log', `insertEnd(${val}) — added at tail`, true);
+      document.getElementById('ll-input').value = '';
+    }
+
+    function llDelete() {
+      const val = parseInt(document.getElementById('ll-input').value);
+      if (isNaN(val)) { log('ll-log', 'Please enter a valid number.'); return; }
+      const idx = list.indexOf(val);
+      if (idx === -1) { log('ll-log', `${val} not found in list!`); return; }
+      const node = document.getElementById('ln-' + idx);
+      if (node) {
+        node.classList.add('removing');
+        setTimeout(() => { list.splice(idx, 1); renderList(); }, 280);
+      } else { list.splice(idx, 1); renderList(); }
+      log('ll-log', `delete(${val}) — node removed`, true);
+      document.getElementById('ll-input').value = '';
+    }
+
+    function resetList() { list = []; renderList(); log('ll-log', 'List reset.'); }
+
+    // ── QUEUE ──
+    let queue = [];
+
+    function renderQueue() {
+      const track = document.getElementById('q-track');
+      track.innerHTML = '';
+      if (queue.length === 0) {
+        track.innerHTML = '<span class="ll-empty">Queue is empty</span>';
+        document.getElementById('q-labels').innerHTML = '';
+        return;
+      }
+      queue.forEach((val, i) => {
+        const node = document.createElement('div');
+        node.className = 'll-node';
+        node.id = 'qn-' + i;
+        node.innerHTML = `<div class="ll-box" style="background:linear-gradient(135deg,#f0a500,#c47f00)">${val}</div>`;
+        if (i < queue.length - 1) {
+          node.innerHTML += `<div class="ll-arrow">→</div>`;
+        }
+        track.appendChild(node);
+      });
+      const nullEl = document.createElement('div');
+      nullEl.innerHTML = `<span class="ll-arrow">→</span><span class="ll-null">NULL</span>`;
+      track.appendChild(nullEl);
+
+      const labels = document.getElementById('q-labels');
+      labels.innerHTML = `<span style="color:#f0a500;font-size:0.72rem;font-weight:bold;">FRONT ↑</span>
+        <span style="flex:1"></span>
+        <span style="color:#7c6fff;font-size:0.72rem;font-weight:bold;">REAR ↑</span>`;
+    }
+
+    function qEnqueue() {
+      const val = parseInt(document.getElementById('q-input').value);
+      if (isNaN(val)) { log('q-log', 'Please enter a valid number.'); return; }
+      if (queue.length >= 7) { log('q-log', 'Queue full! (max 7 for demo)'); return; }
+      queue.push(val);
+      renderQueue();
+      log('q-log', `enqueue(${val}) — added at rear`, true);
+      document.getElementById('q-input').value = '';
+    }
+
+    function qDequeue() {
+      if (!queue.length) { log('q-log', 'Queue is empty — nothing to dequeue!'); return; }
+      const val = queue[0];
+      const frontNode = document.getElementById('qn-0');
+      if (frontNode) {
+        frontNode.classList.add('removing');
+        setTimeout(() => { queue.shift(); renderQueue(); }, 280);
+      } else { queue.shift(); renderQueue(); }
+      log('q-log', `dequeue() — removed ${val} from front`, true);
+    }
+
+    function resetQueue() { queue = []; renderQueue(); log('q-log', 'Queue reset.'); }
+  </script>
+
+</body>
+</html>
