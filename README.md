@@ -1,19 +1,17 @@
-<div align="center">
+ <div align="center">
 
 # ⚡ AlgoVision
 
-### See the Algorithm. Understand the Logic. Practice the Problem.
+### See the Algorithm. Understand the Logic. Master C++.
 
-**An interactive DSA learning platform that turns code into visual, step-by-step execution.**
+**An interactive C++ OOP and DSA learning platform that transforms data structure operations into step-by-step visual execution.**
 
 `Learn` • `Visualize` • `Practice`
 
-<br>
-
-![C++](https://img.shields.io/badge/C++-DSA-blue?logo=cplusplus&logoColor=white)
+![C++](https://img.shields.io/badge/C++-OOP%20%2B%20DSA-blue?logo=cplusplus&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-Web-orange?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-Responsive-blue?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-Interactive-yellow?logo=javascript&logoColor=black)
+![JavaScript](https://img.shields.io/badge/JavaScript-Visualization-yellow?logo=javascript&logoColor=black)
 ![Status](https://img.shields.io/badge/Status-In%20Development-brightgreen)
 ![Project](https://img.shields.io/badge/Academic%20Project-DSCPP--III--2026-purple)
 
@@ -23,313 +21,419 @@
 
 ## 👀 What is AlgoVision?
 
-Ever written a Linked List program that works... but still wondered **what exactly happened to the pointers?**
+Understanding Data Structures and Algorithms is not just about writing code. Students also need to understand how objects, pointers, memory and algorithms behave during execution.
 
-That is the problem **AlgoVision** is designed to solve.
+**AlgoVision** is an interactive educational platform designed to make learning C++ Object-Oriented Programming and Data Structures & Algorithms easier through explanations, code examples and visual execution.
 
-Instead of learning DSA only through theory and code, AlgoVision lets students **see data structures change step-by-step**.
+Instead of simply displaying the final output, AlgoVision aims to demonstrate how data structures change step-by-step as operations are performed.
 
-```text
-          📖 LEARN
-             │
-             ▼
-       🎨 VISUALIZE
-             │
-             ▼
-        💻 PRACTICE
-```
+The platform combines:
 
-You learn the concept, watch the operation happen visually, and then move to structured practice problems.
+- **C++ OOP:** Classes, objects, inheritance, encapsulation and polymorphism.
+- **DSA:** Arrays, Linked Lists, Stacks, Queues, Trees, Graphs and algorithms.
+- **Visualization:** Interactive execution of data structure operations.
+- **Practice:** Topic-wise questions and external coding challenges.
 
-> **The goal is not just to memorize DSA code — it is to understand what the code is actually doing.**
+> The goal is not just to write C++ code, but to understand how object-oriented programming and data structures work internally.
 
 ---
 
-## ✨ The AlgoVision Experience
+## 🎯 The Learning Experience
 
-| 📖 Learn | 🎨 Visualize | 💻 Practice |
-|:---:|:---:|:---:|
-| Understand the concept | Watch every important step | Apply what you learned |
-| Read short explanations | Follow nodes and pointers | Filter questions by topic |
-| Explore C++ examples | Use interactive controls | Choose difficulty |
-| Learn important operations | See labels update live | Continue on LeetCode |
+```text
+                   ⚡ ALGOVISION
+                        |
+          ┌─────────────┼─────────────┐
+          |             |             |
+          ▼             ▼             ▼
+       📖 LEARN      🎨 VISUALIZE   💻 PRACTICE
+          |             |             |
+      C++ OOP         Execution     Coding
+      Concepts        Animation     Questions
+      DSA Theory      Memory View   Challenges
+      Code Examples   Pointer View  LeetCode
+```
+
+### 📖 Learn
+
+- Understand C++ OOP concepts.
+- Explore DSA fundamentals.
+- Study C++ implementations.
+- Understand algorithms and their complexity.
+
+### 🎨 Visualize
+
+- Watch data structures change during operations.
+- Understand pointers and dynamic memory allocation.
+- Follow execution one step at a time.
+- Explore object creation and destruction.
+
+### 💻 Practice
+
+- Explore topic-wise coding questions.
+- Filter questions by difficulty.
+- Test understanding through quizzes.
+- Continue coding practice on LeetCode.
 
 ---
 
-## 🔥 Why AlgoVision?
+# 🧠 C++ Object-Oriented Programming
 
-Students often have to jump between multiple resources:
+OOP is one of the core components of AlgoVision.
 
-```text
-Theory Website → YouTube/Visualizer → Notes → Practice Platform
+The platform uses C++ classes and objects to implement data structures and demonstrate object-oriented programming principles.
+
+## OOP Concepts Covered
+
+| OOP Concept | Implementation in AlgoVision |
+|---|---|
+| Classes | LinkedList, Stack, Queue, Tree |
+| Objects | Instances of data structure classes |
+| Encapsulation | Private data members and public methods |
+| Abstraction | Abstract base classes and interfaces |
+| Inheritance | Derived data structure implementations |
+| Polymorphism | Virtual functions and method overriding |
+| Constructors | Object and node initialization |
+| Destructors | Resource and memory management |
+| Function Overloading | Multiple operation signatures |
+| Function Overriding | Specialized derived class behavior |
+| Templates | Generic data structures |
+| Pointers | Dynamic memory and node connections |
+
+## Example: Object-Oriented Linked List
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int value) {
+        data = value;
+        next = nullptr;
+    }
+};
+
+class LinkedList {
+private:
+    Node* head;
+
+public:
+    LinkedList() {
+        head = nullptr;
+    }
+
+    void insertAtBeginning(int value) {
+        Node* newNode = new Node(value);
+        newNode->next = head;
+        head = newNode;
+    }
+
+    void display() {
+        Node* temp = head;
+
+        while (temp != nullptr) {
+            cout << temp->data << " -> ";
+            temp = temp->next;
+        }
+
+        cout << "NULL";
+    }
+
+    ~LinkedList() {
+        while (head != nullptr) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
+};
+
+int main() {
+    LinkedList list;
+
+    list.insertAtBeginning(30);
+    list.insertAtBeginning(20);
+    list.insertAtBeginning(10);
+
+    list.display();
+
+    return 0;
+}
 ```
 
-AlgoVision brings the learning flow together:
+**Output:**
 
 ```text
-                    ⚡ ALGOVISION
-                         │
-          ┌──────────────┼──────────────┐
-          ▼              ▼              ▼
-      📖 LEARN       🎨 VISUALIZE    💻 PRACTICE
-          │              │              │
-      Concepts       Step-by-step     Structured
-     C++ Examples      Execution       Questions
-                                         │
-                                         ▼
-                                     LeetCode
+10 -> 20 -> 30 -> NULL
 ```
 
-AlgoVision is **not trying to replace LeetCode** and is not an online judge. Its role is to make the journey from **understanding → visualization → practice** simpler.
+This implementation demonstrates classes, objects, encapsulation, constructors, destructors, pointers and dynamic memory allocation.
 
 ---
 
-# 🎨 Watch DSA Come Alive
+# 📚 Data Structures and Algorithms
 
-## 🔗 Linked List
+AlgoVision organizes DSA learning into individual modules.
 
-Don't just read:
+| Data Structure | C++ Class / Module | Main Operations |
+|---|---|---|
+| Arrays | `ArrayDS` | Insert, Delete, Search |
+| Strings | `StringOperations` | Search, Reverse, Manipulate |
+| Singly Linked List | `SinglyLinkedList` | Insert, Delete, Traverse |
+| Doubly Linked List | `DoublyLinkedList` | Insert, Delete, Traverse |
+| Circular Linked List | `CircularLinkedList` | Insert, Delete, Traverse |
+| Stack | `Stack<T>` | Push, Pop, Peek |
+| Queue | `Queue<T>` | Enqueue, Dequeue, Front |
+| Circular Queue | `CircularQueue<T>` | Enqueue, Dequeue |
+| Binary Tree | `BinaryTree` | Insert, Search, Traversal |
+| Binary Search Tree | `BinarySearchTree` | Insert, Search, Delete |
+| Graph | `Graph` | BFS, DFS |
+| Sorting | `Sorting` | Bubble, Selection, Insertion, Merge, Quick |
+| Searching | `Searching` | Linear, Binary |
+| Recursion | `Recursion` | Recursive problem solving |
+
+*Implementation and visualization availability will be introduced progressively.*
+
+---
+
+# 🎨 Interactive DSA Visualization
+
+One of the main features of AlgoVision is its step-by-step visualization engine.
+
+Rather than displaying only the final result, the platform aims to explain the internal changes occurring during data structure operations.
+
+## 🔗 Linked List Visualization
+
+Consider this C++ operation:
 
 ```cpp
 newNode->next = head;
 head = newNode;
 ```
 
-See what it means.
+AlgoVision aims to demonstrate each important step.
 
-### Before
-
-```text
-HEAD
- │
- ▼
-┌────┬────┐     ┌────┬────┐     ┌────┬──────┐
-│ 10 │  •─┼────▶│ 20 │  •─┼────▶│ 30 │ NULL │
-└────┴────┘     └────┴────┘     └────┴──────┘
-```
-
-### New node appears
-
-```text
-NEW
- │
- ▼
-┌────┬────┐
-│ 05 │  ? │
-└────┴────┘
-```
-
-### Pointer changes
-
-```text
-NEW                         OLD HEAD
- │                              │
- ▼                              ▼
-┌────┬────┐                  ┌────┬────┐
-│ 05 │  •─┼─────────────────▶│ 10 │  • │
-└────┴────┘                  └────┴────┘
-```
-
-### After
+### Before Insertion
 
 ```text
 HEAD
- │
+ |
  ▼
-[ 05 ] ──▶ [ 10 ] ──▶ [ 20 ] ──▶ [ 30 ] ──▶ NULL
+[10] ──▶ [20] ──▶ [30] ──▶ NULL
 ```
 
-AlgoVision is designed to show intermediate states like these so students can follow **node creation, pointer movement, link updates and HEAD changes**.
-
----
-
-## 📚 Stack
-
-Watch `TOP` move as elements are pushed or popped.
+### Create a New Node
 
 ```text
-            TOP
-             ↓
-          ┌─────┐
-          │  30 │
-          ├─────┤
-          │  20 │
-          ├─────┤
-          │  10 │
-          └─────┘
+NEW NODE
+    |
+    ▼
+  [05] ──▶ NULL
 ```
 
-### Operations
-
-`PUSH` ➕ &nbsp;&nbsp; `POP` ➖ &nbsp;&nbsp; `TOP` 🔝
-
----
-
-## 🚶 Queue
-
-See how `FRONT` and `REAR` change during queue operations.
+### Update Pointer Connection
 
 ```text
- FRONT                              REAR
-   ↓                                  ↓
-┌────┐     ┌────┐     ┌────┐     ┌────┐
-│ 10 │ ──▶ │ 20 │ ──▶ │ 30 │ ──▶ │ 40 │
-└────┘     └────┘     └────┘     └────┘
+NEW NODE             OLD HEAD
+    |                    |
+    ▼                    ▼
+  [05] ───────────────▶ [10] ──▶ [20] ──▶ [30]
 ```
 
-### Operations
-
-`ENQUEUE` ➕ &nbsp;&nbsp; `DEQUEUE` ➖ &nbsp;&nbsp; `FRONT` ⏩ &nbsp;&nbsp; `REAR` ⏪
-
----
-
-## 🎮 You Control the Visualization
-
-Students don't have to watch a fixed animation.
+### Final Result
 
 ```text
-┌────────────┐  ┌──────────┐  ┌────────┐  ┌─────────┐
-│ ⏮ Previous │  │ Next ⏭  │  │ ▶ Play │  │ ↻ Reset │
-└────────────┘  └──────────┘  └────────┘  └─────────┘
+HEAD
+ |
+ ▼
+[05] ──▶ [10] ──▶ [20] ──▶ [30] ──▶ NULL
 ```
 
-Move one step at a time, play the complete execution, or reset and try again.
+The visualization engine will demonstrate:
 
----
+- Node creation.
+- Pointer assignment.
+- HEAD updates.
+- Node connections.
+- Final linked list structure.
 
-# 🧠 What Can You Learn?
-
-| Topic | Learn | Visualize / Explore | Practice |
-|---|:---:|:---:|:---:|
-| Arrays | ✅ | 📌 Planned | ✅ |
-| Strings | ✅ | 📌 Planned | ✅ |
-| Linked Lists | ✅ | 🎨 Core Focus | ✅ |
-| Stacks | ✅ | 🎨 Core Focus | ✅ |
-| Queues | ✅ | 🎨 Core Focus | ✅ |
-| Trees | ✅ | 📌 Planned | ✅ |
-| Graphs | ✅ | 📌 Planned | ✅ |
-| Pointers | ✅ | 🎨 Core Focus | — |
-| Dynamic Memory Allocation | ✅ | 🎨 Core Focus | — |
-
-> The proposal prioritizes visualizations that are practical to implement during the semester, especially Linked Lists, pointers/DMA, Stacks and Queues.
-
----
-
-# 🚀 From Learning to Solving
-
-A student's journey through AlgoVision looks like this:
+## 📦 Stack Visualization
 
 ```text
-┌───────────────────────┐
-│  1️⃣ Choose DSA Topic │
-└───────────┬───────────┘
-            ▼
-┌───────────────────────┐
-│  2️⃣ Learn the Concept │
-└───────────┬───────────┘
-            ▼
-┌───────────────────────┐
-│  3️⃣ View C++ Example  │
-└───────────┬───────────┘
-            ▼
-┌───────────────────────┐
-│  4️⃣ Visualize It      │
-└───────────┬───────────┘
-            ▼
-┌───────────────────────┐
-│  5️⃣ Pick a Question   │
-└───────────┬───────────┘
-            ▼
-┌───────────────────────┐
-│  6️⃣ Solve on LeetCode │
-└───────────────────────┘
+          TOP
+           |
+           ▼
+       ┌───────┐
+       │  30   │
+       ├───────┤
+       │  20   │
+       ├───────┤
+       │  10   │
+       └───────┘
 ```
 
----
+Operations:
 
-# 🔍 Practice Smarter
+- PUSH
+- POP
+- PEEK
 
-Instead of throwing hundreds of random questions at a beginner, AlgoVision organizes practice.
+## 🚶 Queue Visualization
 
 ```text
-🔎 Search Questions
-
-Topic
-├── Arrays
-├── Strings
-├── Linked Lists
-├── Stacks
-├── Queues
-├── Trees
-└── Graphs
-
-Difficulty
-├── 🟢 Easy
-├── 🟡 Medium
-└── 🔴 Hard
-
-        ↓
-
-Select Problem
-
-        ↓
-
-🔗 Open on LeetCode
+ FRONT                       REAR
+   |                           |
+   ▼                           ▼
+ ┌────┐    ┌────┐    ┌────┐   ┌────┐
+ │ 10 │ -> │ 20 │ -> │ 30 │ ->│ 40 │
+ └────┘    └────┘    └────┘   └────┘
 ```
 
-The actual coding and submission remain on LeetCode. AlgoVision focuses on helping students **find the right problem after learning the concept**.
+Operations:
 
----
+- ENQUEUE
+- DEQUEUE
+- FRONT
+- REAR
 
-# 🏗️ Architecture
+## 🎮 Visualization Controls
 
-```text
-                           👤 USER
-                              │
-                              ▼
-                    ┌──────────────────┐
-                    │  ⚡ AlgoVision   │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │ Select DSA Topic │
-                    └────────┬─────────┘
-                             │
-             ┌───────────────┼───────────────┐
-             │               │               │
-             ▼               ▼               ▼
-       ┌──────────┐    ┌────────────┐   ┌────────────┐
-       │ 📖 LEARN │    │ 🎨 VISUAL  │   │ 💻 PRACTICE│
-       └────┬─────┘    └─────┬──────┘   └─────┬──────┘
-            │                │                │
-            ▼                ▼                ▼
-       DSA Concepts     Step-by-Step     Topic/Difficulty
-       C++ Examples      Node/Pointer       Questions
-                           View                │
-                                               ▼
-                                           LeetCode
-```
+The planned visualization interface will include:
 
----
-
-# 🛠️ Built With
-
-<div align="center">
-
-| Technology | Role in AlgoVision |
+| Control | Function |
 |---|---|
-| 🌐 **HTML5** | Website structure |
-| 🎨 **CSS3** | Styling and responsive interface |
-| ⚡ **JavaScript** | Visualization engine and interactions |
-| 💻 **C++** | DSA implementations and learning examples |
-| 💾 **Browser Storage** | Local progress tracking |
-| 🧩 **DOM** | Dynamic nodes, arrows, labels and states |
-| 🔗 **LeetCode** | External problem-solving platform |
+| Previous | Go to the previous execution step |
+| Next | Move to the next execution step |
+| Play | Automatically play execution |
+| Pause | Pause the animation |
+| Reset | Restore the initial state |
+| Speed | Adjust animation speed |
 
-</div>
+---
 
-No backend account is required for the planned basic progress system — completion data is stored locally in the browser.
+# ⚙️ C++ Execution and Visualization Architecture
+
+AlgoVision separates actual C++ data structure operations from their browser-based visual representation.
+
+```text
+          C++ OOP + DSA ENGINE
+                    |
+                    ▼
+           Data Structure Classes
+                    |
+                    ▼
+            Execute Operations
+                    |
+                    ▼
+            Execution Trace
+                    |
+                    ▼
+               JSON Data
+                    |
+                    ▼
+          JavaScript Visualization
+                    |
+                    ▼
+            Interactive Website
+```
+
+### C++ Engine Responsibilities
+
+- Implement actual DSA operations.
+- Manage classes and objects.
+- Demonstrate OOP principles.
+- Handle pointers and dynamic memory.
+- Generate execution events and state snapshots.
+
+### JavaScript Responsibilities
+
+- Read execution trace data.
+- Render nodes and connections.
+- Animate pointer changes.
+- Highlight C++ statements.
+- Handle Previous, Next, Play and Reset controls.
+
+### JSON Execution Trace
+
+Example event:
+
+```json
+{
+  "operation": "insertAtBeginning",
+  "step": 1,
+  "code": "head = newNode;",
+  "message": "HEAD now points to the new node.",
+  "state": {
+    "head": "N1",
+    "nodes": [
+      {
+        "id": "N1",
+        "value": 10,
+        "next": null
+      }
+    ]
+  }
+}
+```
+
+The trace is generated by the C++ engine and consumed by the JavaScript visualization system.
+
+**Execution approach:** The initial version can use a native C++ executable with JSON input/output. WebAssembly can be introduced later to enable direct browser-based C++ execution.
+
+---
+
+# 🏗️ System Architecture
+
+```text
+                         👤 USER
+                            |
+                            ▼
+                   ┌──────────────────┐
+                   │   ALGOVISION     │
+                   └────────┬─────────┘
+                            |
+                            ▼
+                   ┌──────────────────┐
+                   │ HTML / CSS / JS  │
+                   └────────┬─────────┘
+                            |
+           ┌────────────────┼────────────────┐
+           |                |                |
+           ▼                ▼                ▼
+      📖 LEARNING      🎨 VISUALIZER    💻 PRACTICE
+           |                |                |
+           ▼                ▼                ▼
+       OOP + DSA       Execution Trace   Question Data
+           |                |
+           ▼                ▼
+       C++ CLASSES       JSON EVENTS
+           |                |
+           ▼                ▼
+       DSA ENGINE      JS RENDERING
+```
+
+---
+
+# 🛠️ Technology Stack
+
+| Technology | Role |
+|---|---|
+| C++ | OOP and DSA implementations |
+| HTML5 | Website structure |
+| CSS3 | Styling and responsive interface |
+| JavaScript | Interactions and visualization |
+| JSON | C++ and JavaScript data exchange |
+| DOM | Dynamic visualization rendering |
+| Browser Storage | Local learning progress |
+| CMake | C++ project build configuration |
+| WebAssembly | Planned browser-based C++ execution |
+| LeetCode | External coding practice |
+
+No user account or database server is required for the initial version.
 
 ---
 
@@ -338,86 +442,204 @@ No backend account is required for the planned basic progress system — complet
 ```text
 AlgoVision/
 │
-├── 🌐 index.html
-├── 📖 README.md
+├── index.html
+├── README.md
 │
-├── 🎨 css/
-│   └── style.css
+├── frontend/
+│   ├── css/
+│   │   ├── style.css
+│   │   ├── dashboard.css
+│   │   ├── visualization.css
+│   │   └── responsive.css
+│   │
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── navigation.js
+│   │   ├── visualization.js
+│   │   ├── trace-player.js
+│   │   ├── practice.js
+│   │   └── progress.js
+│   │
+│   └── assets/
+│       ├── images/
+│       └── icons/
 │
-├── ⚡ js/
-│   ├── main.js
-│   ├── visualization.js
-│   └── progress.js
+├── cpp-engine/
+│   ├── include/
+│   │   ├── core/
+│   │   │   ├── Visualizable.h
+│   │   │   ├── DataStructure.h
+│   │   │   └── ExecutionTrace.h
+│   │   │
+│   │   ├── arrays/
+│   │   │   └── ArrayDS.h
+│   │   │
+│   │   ├── linked-list/
+│   │   │   ├── LinkedList.h
+│   │   │   ├── DoublyLinkedList.h
+│   │   │   └── CircularLinkedList.h
+│   │   │
+│   │   ├── stack/
+│   │   │   └── Stack.h
+│   │   │
+│   │   ├── queue/
+│   │   │   └── Queue.h
+│   │   │
+│   │   ├── trees/
+│   │   │   ├── BinaryTree.h
+│   │   │   └── BinarySearchTree.h
+│   │   │
+│   │   ├── graphs/
+│   │   │   └── Graph.h
+│   │   │
+│   │   └── algorithms/
+│   │       ├── Sorting.h
+│   │       ├── Searching.h
+│   │       └── Recursion.h
+│   │
+│   ├── src/
+│   │   ├── main.cpp
+│   │   ├── linked-list/
+│   │   ├── stack/
+│   │   ├── queue/
+│   │   ├── trees/
+│   │   ├── graphs/
+│   │   └── algorithms/
+│   │
+│   ├── tests/
+│   │   ├── linkedlist_test.cpp
+│   │   ├── stack_test.cpp
+│   │   └── queue_test.cpp
+│   │
+│   ├── CMakeLists.txt
+│   └── README.md
 │
-├── 📚 topics/
-│   ├── arrays/
-│   ├── strings/
-│   ├── linked-list/
-│   ├── stack/
-│   ├── queue/
-│   ├── trees/
-│   └── graphs/
+├── data/
+│   ├── questions.json
+│   ├── topics.json
+│   └── traces/
 │
-├── 🗃️ data/
-│   └── questions.js
-│
-└── 🖼️ assets/
-    ├── images/
-    └── icons/
+└── docs/
+    ├── architecture.md
+    ├── oop-concepts.md
+    └── visualization-flow.md
 ```
 
-> This is the proposed organization and may evolve as development continues.
+*The structure represents the proposed architecture and will evolve as development progresses.*
 
 ---
 
-# 🗺️ Development Roadmap
+# 💻 Code Organization Principles
 
-### 🟢 Phase 1 — Foundation
-- [ ] Build responsive interface
-- [ ] Create topic navigation
-- [ ] Prepare DSA learning content
-- [ ] Add C++ examples
+AlgoVision will follow these development principles:
 
-### 🟡 Phase 2 — Practice
-- [ ] Build question dataset
-- [ ] Add topic filters
-- [ ] Add difficulty filters
-- [ ] Add search
-- [ ] Connect selected questions to LeetCode
+1. Use separate header (`.h`) and source (`.cpp`) files.
+2. Keep data members private wherever appropriate.
+3. Use constructors and destructors for object lifecycle management.
+4. Use inheritance only when there is a meaningful common interface.
+5. Use virtual functions to demonstrate runtime polymorphism.
+6. Use templates for reusable data structures.
+7. Handle dynamic memory safely.
+8. Separate the DSA engine from frontend visualization.
+9. Test every important data structure operation.
 
-### 🔵 Phase 3 — Visualization
-- [ ] Linked List visualization
-- [ ] Pointer / DMA visualization
-- [ ] Stack visualization
-- [ ] Queue visualization
-- [ ] Previous / Next controls
-- [ ] Play / Reset controls
+---
 
-### 🟣 Phase 4 — Final Integration
-- [ ] Browser-based progress tracking
-- [ ] Responsive testing
-- [ ] Visualization testing
-- [ ] Final integration
-- [ ] Documentation
+# 🔍 Practice Arena
+
+AlgoVision will organize coding questions according to topics and difficulty.
+
+### Topics
+
+```text
+DSA Practice
+│
+├── Arrays
+├── Strings
+├── Linked Lists
+├── Stacks
+├── Queues
+├── Trees
+├── Graphs
+├── Sorting
+├── Searching
+└── Recursion
+```
+
+### Difficulty
+
+- 🟢 Easy
+- 🟡 Medium
+- 🔴 Hard
+
+### Practice Flow
+
+```text
+Select Topic
+     |
+     ▼
+Learn Concept
+     |
+     ▼
+Visualize Operation
+     |
+     ▼
+Select Coding Problem
+     |
+     ▼
+Solve on LeetCode
+```
+
+AlgoVision organizes and recommends relevant questions. Actual online coding and submissions are handled by external platforms.
+
+---
+
+# 📊 Student Progress Tracking
+
+The planned browser-based progress system will track:
+
+- Completed OOP concepts.
+- Explored DSA topics.
+- Completed visualizations.
+- Attempted practice questions.
+- Learning milestones.
+
+Progress data will be stored locally using browser storage.
+
+No login or cloud synchronization is included in the initial scope.
 
 ---
 
 # 🎯 Expected Outcome
 
-When AlgoVision is complete, a student should be able to:
+When completed, AlgoVision aims to provide students with:
 
-**Choose a topic** → **understand it** → **see a C++ example** → **watch the operation execute** → **practice a relevant problem**
+- An interactive C++ OOP learning environment.
+- Object-oriented DSA implementations.
+- Step-by-step data structure visualizations.
+- Pointer and memory concept demonstrations.
+- C++ source code with explanations.
+- Structured coding practice.
+- Learning progress tracking.
+- A reusable C++ execution and visualization architecture.
 
-The project is planned to include:
+The central objective is to connect **C++ OOP theory with practical DSA implementation** through visual learning.
 
-- 🌐 Working learning website
-- 💻 C++ examples
-- 🎨 Interactive visualization modules
-- 🧠 Structured DSA topics
-- 📝 Organized question data
-- 🔎 Search and filtering
-- 💾 Local progress tracking
-- 🧪 Testing and documentation
+---
+
+# ⚠️ Project Scope and Limitations
+
+AlgoVision is an educational learning and visualization platform.
+
+It is not intended to be:
+
+- A complete C++ compiler.
+- A full-featured IDE.
+- A replacement for a professional debugger.
+- An online coding judge.
+- A replacement for LeetCode.
+
+The initial architecture uses a C++ execution engine and JavaScript-based visualization. Browser-based C++ execution through WebAssembly is a planned enhancement.
 
 ---
 
@@ -428,7 +650,7 @@ The project is planned to include:
 ### `DSCPP-III-2026-T218`
 
 | Role | Team Member |
-|:---:|:---|
+|---|---|
 | 👑 **Team Lead** | **Abhishek** |
 | 👨‍💻 Team Member | **Chaitanya Maithani** |
 | 👨‍💻 Team Member | **Chaitanya Kharkwal** |
@@ -442,58 +664,39 @@ The project is planned to include:
 
 | | |
 |---|---|
-| 🚀 **Project** | AlgoVision |
-| 📝 **Full Title** | Interactive DSA Learning, Visualization and Practice Platform |
-| 🆔 **Team ID** | DSCPP-III-2026-T218 |
-| 🧠 **Domain** | Data Structures & Algorithms |
-| 🎓 **Type** | Academic / Educational Project |
-| 💻 **DSA Language** | C++ |
-| 🌐 **Platform** | Web |
-| 🚧 **Status** | In Development |
-
----
-
-# ⚠️ Scope
-
-AlgoVision is an **educational visualization and learning platform**.
-
-It is **not** intended to be:
-
-- ❌ A complete C++ compiler
-- ❌ A debugger
-- ❌ An online judge
-- ❌ A replacement for LeetCode
-
-Internet access is required when opening external LeetCode problems. Basic learning content and locally stored progress are designed around standard browser technologies.
+| 🚀 Project | AlgoVision |
+| 📝 Full Title | Interactive C++ OOP and DSA Learning & Visualization Platform |
+| 🆔 Team ID | DSCPP-III-2026-T218 |
+| 🧠 Domain | Object-Oriented Programming and Data Structures |
+| 🎓 Project Type | Academic / Educational |
+| 💻 Core Language | C++ |
+| 🌐 Frontend | HTML, CSS, JavaScript |
+| 🎨 Visualization | JavaScript + JSON |
+| 🚧 Status | In Development |
 
 ---
 
 # 📚 References
 
-The project proposal uses the following references:
-
-- 📘 T. H. Cormen, C. E. Leiserson, R. L. Rivest & C. Stein — *Introduction to Algorithms*
-- 📗 M. A. Weiss — *Data Structures and Algorithm Analysis in C++*
-- 📙 Bjarne Stroustrup — *The C++ Programming Language*
-- 💻 LeetCode — external programming-practice platform
-- ⚙️ C++ Standard Library documentation
-- 🌐 MDN Web Docs — HTML, CSS, JavaScript, DOM and browser storage concept.
+- T. H. Cormen, C. E. Leiserson, R. L. Rivest and C. Stein — *Introduction to Algorithms*.
+- M. A. Weiss — *Data Structures and Algorithm Analysis in C++*.
+- Bjarne Stroustrup — *The C++ Programming Language*.
+- ISO C++ Documentation — C++ language and standard library.
+- MDN Web Docs — HTML, CSS, JavaScript and DOM.
+- CMake Documentation — C++ build configuration.
+- LeetCode — External coding practice platform.
 
 ---
 
 <div align="center">
 
-## 🌟 
+## ⚡ ALGOVISION
 
+### Learn C++ OOP. Visualize DSA. Master the Logic.
 
+**📖 LEARN → 🎨 VISUALIZE → 💻 PRACTICE**
 
-<br>
-
-**📖 LEARN &nbsp;&nbsp; → &nbsp;&nbsp; 🎨 VISUALIZE &nbsp;&nbsp; → &nbsp;&nbsp; 💻 PRACTICE**
-
-<br>
-
-If you like **AlgoVision**, consider giving the repository a ⭐
+If you like AlgoVision, consider giving the repository a ⭐
 
 **Made by Team AlgoVision**
 
